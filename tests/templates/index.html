@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Values</title>
+</head>
+
+<body>
+    <h1>Server Values</h1>
+    <div>Value A: <span id="valueA"></span></div>
+    <div>Value B: <span id="valueB"></span></div>
+
+    <script>
+        function fetchData() {
+            fetch('/data')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('valueA').textContent = data.valueA;
+                    document.getElementById('valueB').textContent = data.valueB;
+                });
+        }
+
+        // Fetch data every second
+        setInterval(fetchData, 1);
+    </script>
+</body>
+
+</html>
